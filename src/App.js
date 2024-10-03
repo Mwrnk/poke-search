@@ -1,13 +1,8 @@
 import "./App.css";
-import Container from "./Components/Container";
-import { Searchbar } from "./Components/Searchbar";
+import { Home } from "./pages/Home";
 
 function App() {
-  return (
-    <Container>
-      <Searchbar></Searchbar>
-    </Container>
-  );
+  return <Home />;
 }
 
 export default App;
