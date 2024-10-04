@@ -12,15 +12,11 @@ export const Home = () => {
     getPokemons();
   }, []);
 
-  const getPokemons = () => {
-    var endpoints = [];
-    for (var i = 1; i < 1000; i++) {
-      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
-    }
-    console.log(endpoints);
-    axios
-      .all(endpoints.map((endpoint) => axios.get(endpoint)))
-      .then((res) => setPokemons(res));
+  const getPokemons = async () => {
+
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=50&offset=0`)
+
+    setPokemons(response.data.results)
   };
 
   return (
