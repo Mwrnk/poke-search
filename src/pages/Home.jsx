@@ -7,6 +7,7 @@ import ListaPokemon from "../Components/PokemonList/ListPokemon";
 
 export const Home = () => {
   const [pokemons, setPokemons] = useState([]);
+  
   useEffect(() => {
     getPokemons();
   }, []);

@@ -24,11 +24,7 @@ const ListaPokemon = ({ pokemons }) => {
       {pokemons.map((pokemon, index) => (
         <PokemonCard
           key={index}
-          name={pokemon.data.name}
-          image={pokemon.data.sprites.front_default}
-          type={pokemon.data.types
-            .map((objTipo) => objTipo.type.name)
-            .join(", ")}
+          pokemon={pokemon}
         />
       ))}
     </PokemonListContainer>
