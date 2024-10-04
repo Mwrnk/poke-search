@@ -38,29 +38,30 @@ const PokemonType = styled.p`
   color: black;
 `;
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, onClick }) => {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
     <PokemonCardContainer
+      onClick={onClick}
       isPressed={isPressed}
       onMouseDown={() => setIsPressed(true)} // Define isPressed como true ao pressionar
       onMouseUp={() => setIsPressed(false)} // Define isPressed como false ao soltar
       onMouseLeave={() => setIsPressed(false)} // Garante que a animação volte se o mouse sair enquanto pressionado
     >
-      <PokemonImage 
-        src={pokemon.sprites ? pokemon.sprites.front_default : ''}
+      <PokemonImage
+        src={pokemon.sprites ? pokemon.sprites.front_default : ""}
         alt={pokemon.name}
       />
       <div>
         <PokemonName>{pokemon.name}</PokemonName>
-        { 
-          pokemon.types ? 
+        {pokemon.types ? (
           pokemon.types.map((type, index) => (
             <PokemonType key={index}>{type.type.name}</PokemonType>
           ))
-          : <PokemonType>Tipo não encontrado</PokemonType>
-        }
+        ) : (
+          <PokemonType>Tipo não encontrado</PokemonType>
+        )}
       </div>
     </PokemonCardContainer>
   );

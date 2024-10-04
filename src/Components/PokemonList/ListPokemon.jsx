@@ -18,13 +18,14 @@ const PokemonListContainer = styled.div`
   }
 `;
 
-const ListaPokemon = ({ pokemons }) => {
+const ListaPokemon = ({ pokemons, onPokemonClick }) => {
   return (
     <PokemonListContainer>
       {pokemons.map((pokemon, index) => (
         <PokemonCard
-          key={index}
+          key={pokemon.id}
           pokemon={pokemon}
+          onClick={() => onPokemonClick(index)} // Passa o índice ao clicar
         />
       ))}
     </PokemonListContainer>

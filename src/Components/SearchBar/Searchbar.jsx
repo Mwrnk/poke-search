@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import searchIcon from "../../assets/search.svg";
 import filterIcon from "../../assets/filter.svg";
 import closeIcon from "../../assets/close.svg";
@@ -150,7 +150,7 @@ const ModalParagraph = styled.p`
 `;
 
 const ModalContainerTipos = styled.div`
-  background-color: #e2e2e2;
+  background-color: #f3edf7;
   border-radius: 16px;
   display: grid;
   justify-items: center;
@@ -159,6 +159,7 @@ const ModalContainerTipos = styled.div`
   gap: 10px; /* Espaçamento entre os ícones */
   padding: 16px; /* Espaçamento interno */
   width: auto; /* Ajusta a largura para 100% do container pai */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 export const Searchbar = ({ functionSearch }) => {
