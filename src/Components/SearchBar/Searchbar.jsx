@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import searchIcon from "../../assets/search.svg";
 import filterIcon from "../../assets/filter.svg";
@@ -32,16 +32,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export class Searchbar extends React.Component {
-  state = {
-    pokemonBuscado: [],
+export const Searchbar = ({ functionSearch }) => {
+  const [pokemonBuscado, setPokemonBuscado] = useState('')
+
+  const onChangePokemonBuscado = (event) => {
+    setPokemonBuscado(event.target.value);
+    functionSearch(event.target.value)
   };
 
-  onChangePokemonBuscado = (event) => {
-    this.setState({ pokemonBuscado: event.target.value });
-  };
-
-  render() {
     return (
       <>
         <SearchBar>
@@ -50,8 +48,8 @@ export class Searchbar extends React.Component {
             type="text"
             placeholder="Buscar Pokémon..."
             maxLength={12}
-            onChange={this.onChangePokemonBuscado}
-            value={this.state.pokemonBuscado}
+            onChange={(event) => onChangePokemonBuscado(event)}
+            value={pokemonBuscado}
           ></Input>
           <Button>
             <Icon src={filterIcon} />
@@ -59,5 +57,4 @@ export class Searchbar extends React.Component {
         </SearchBar>
       </>
     );
-  }
 }
