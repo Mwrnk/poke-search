@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 
 const PokemonCardContainer = styled.div`
@@ -36,8 +37,23 @@ const PokemonType = styled.p`
   color: black;
 `;
 
-const PokemonCard = ({ name, image, type }) => {
+const PokemonCard = ({ pokemon }) => {
+  const [pokemonDetail, setPokemonDetail] = useState([]);
   const [isPressed, setIsPressed] = useState(false);
+
+  useEffect(() => { 
+    getDetailPokemon() 
+  }, [])
+
+  const getDetailPokemon = async () => {
+    try {
+      const response = await axios.get(`${pokemon.url}`)
+      console.log(response)
+      setPokemonDetail(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <PokemonCardContainer
@@ -46,10 +62,19 @@ const PokemonCard = ({ name, image, type }) => {
       onMouseUp={() => setIsPressed(false)} // Define isPressed como false ao soltar
       onMouseLeave={() => setIsPressed(false)} // Garante que a animação volte se o mouse sair enquanto pressionado
     >
-      <PokemonImage src={image} alt={name} />
+      <PokemonImage 
+        src={pokemonDetail.sprites ? pokemonDetail.sprites.front_default : ''}
+        alt={pokemon.name}
+      />
       <div>
-        <PokemonName>{name}</PokemonName>
-        <PokemonType>{type}</PokemonType>
+        <PokemonName>{pokemon.name}</PokemonName>
+        { 
+          pokemonDetail.types ? 
+          pokemonDetail.types.map((type) => (
+            <PokemonType>{type.type.name}</PokemonType>
+          ))
+          : <PokemonType>Tipo não encontrado</PokemonType>
+        }
       </div>
     </PokemonCardContainer>
   );
