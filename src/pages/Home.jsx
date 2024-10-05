@@ -11,6 +11,7 @@ export const Home = () => {
   const [detailPokemon, setDetailPokemon] = useState([]);
   const [searchQuery, setSearchQuery] = useState([]);
   const [selectedPokemonIndex, setSelectedPokemonIndex] = useState(null);
+  const [selectedType, setSelectedType] = useState(null);
 
   useEffect(() => {
     getPokemons();
@@ -51,9 +52,13 @@ export const Home = () => {
     setSearchQuery(query);
   };
 
-  const searchedPokemons = detailPokemon.filter((pokemon) =>
-    pokemon.name.includes(searchQuery)
-  );
+  const searchedPokemons = detailPokemon.filter((pokemon) => {
+    const matchesName = pokemon.name.includes(searchQuery);
+    const matchesType = selectedType
+      ? pokemon.types.some((typeInfo) => typeInfo.type.name === selectedType)
+      : true;
+    return matchesName && matchesType;
+  });
 
   const selectedPokemon =
     selectedPokemonIndex !== null ? pokemons[selectedPokemonIndex] : null;
@@ -62,7 +67,11 @@ export const Home = () => {
     <>
       <Container>
         <Sidebar>
-          <Searchbar functionSearch={handleSetSearchQuery} />
+          <h1>{`${searchedPokemons.length} Pokémons`}</h1>
+          <Searchbar
+            functionSearch={handleSetSearchQuery}
+            onTypeSelect={setSelectedType} // Passando a função para o Searchbar
+          />
           <ListaPokemon
             pokemons={searchedPokemons}
             onPokemonClick={handlePokemonClick}

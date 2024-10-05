@@ -64,7 +64,7 @@ const ModalIconTipo = styled.img`
   height: 64px;
   transition: transform 0.3 ease;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   cursor: pointer;
 `;
@@ -90,6 +90,7 @@ const ModalContent = styled.div`
   max-width: auto;
   height: auto;
   white-space: normal;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 `;
 
 const ModalCloseButton = styled.button`
@@ -162,12 +163,20 @@ const ModalContainerTipos = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
-export const Searchbar = ({ functionSearch }) => {
+export const Searchbar = ({ functionSearch, onTypeSelect }) => {
   const [pokemonBuscado, setPokemonBuscado] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
+
+  const handleTypeIconClick = (filename) => {
+    // A função retorna o nome do arquivo do icone: Bug_icon_HOME3.png
+    // Então essa função realiza o tratamento no nome recebido, e retorna o tipo para a página Home
+    const type = filename.split("_")[0].toLowerCase(); // Extrai o nome do tipo antes do primeiro "_" e transforma em minúsculas
+    console.log(`Ícone do tipo clicado: ${type}`);
+    onTypeSelect(type); // Passa o tipo para o Home
+  };
 
   const onChangePokemonBuscado = (event) => {
     setPokemonBuscado(event.target.value);
@@ -204,14 +213,26 @@ export const Searchbar = ({ functionSearch }) => {
             </ModalFilterLabel>
             <ModalContainerTipos>
               {Object.keys(iconTipos).map((key) => (
-                <ModalIconTipo key={key} src={iconTipos[key]} alt={key} />
+                <ModalIconTipo
+                  key={key}
+                  src={iconTipos[key]}
+                  alt={key}
+                  onClick={() => {
+                    handleTypeIconClick(key);
+                  }}
+                />
               ))}
             </ModalContainerTipos>
 
             <ModalFooter>
-              <Button $bgColor="#FF4D4D">Resetar</Button>
-              <Button $bgColor="#007AFF" onClick={console.log("Pesquisando")}>
-                Pesquisar
+              <Button
+                $bgColor="#007AFF"
+                onClick={() => {
+                  onTypeSelect(null);
+                  setPokemonBuscado("");
+                }}
+              >
+                Limpar Filtro
               </Button>
             </ModalFooter>
           </ModalContent>

@@ -12,7 +12,6 @@ const PokemonCardContainer = styled.div`
   border-radius: 10px;
   transition: background-color ease 0.25s, transform ease 0.1s; /* Transições */
   cursor: pointer;
-
   &:hover {
     background-color: #c4c3c3;
   }
@@ -30,11 +29,14 @@ const PokemonImage = styled.img`
 const PokemonName = styled.h3`
   margin: 0;
   font-size: 1.5em;
+  white-space: nowrap; /* Evita que o texto quebre em múltiplas linhas */
+  overflow: hidden; /* Oculta o texto que transborda */
+  text-overflow: ellipsis; /* Adiciona "..." no final se o texto for muito longo */
 `;
 
 const PokemonType = styled.p`
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: black;
 `;
 
