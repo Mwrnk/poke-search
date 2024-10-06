@@ -39,8 +39,8 @@ const Icon = styled.img`
   width: ${(props) => props.$iconW || "24px"};
   height: ${(props) => props.$iconH || "24px"};
 `;
-const Button = styled.button`
-  padding: 10px;
+export const Button = styled.button`
+  padding: 10px 20px;
   border: none;
   border-radius: 7px;
   cursor: pointer;
@@ -49,6 +49,9 @@ const Button = styled.button`
   font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  width: auto;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao botão */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Transições para hover */

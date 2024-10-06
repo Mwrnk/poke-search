@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ListaPokemonContext } from "../../pages/Home";
+import { ListaPokemonContext } from "../../pages/Pokesearch";
 import axios from "axios";
 import styled from "styled-components";
 
