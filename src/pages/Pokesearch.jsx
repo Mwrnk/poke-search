@@ -3,9 +3,10 @@ import axios from "axios";
 import Container from "../Components/Container/Container";
 import { Searchbar } from "../Components/SearchBar/Searchbar";
 import Sidebar from "../Components/SideBar/Sidebar";
-import ListaPokemon from "../Components/PokemonList/ListPokemon";
+import ListaPokemon from "../Components/ListPokemon/ListPokemon";
 import Section from "../Components/MainContent/Maincontent";
-
+import Body from "../Components/Body/Body";
+import Header from "../Components/Header/Header";
 export const Pokesearch = () => {
   const [pokemons, setPokemons] = useState([]);
   const [detailPokemon, setDetailPokemon] = useState([]);
@@ -63,18 +64,22 @@ export const Pokesearch = () => {
   return (
     <>
       <Container>
-        <Sidebar>
-          <h1>{`${searchedPokemons.length} Pokémons`}</h1>
-          <Searchbar
-            functionSearch={handleSetSearchQuery}
-            onTypeSelect={setSelectedType} // Passando a função para o Searchbar
-          />
-          <ListaPokemon
-            pokemons={searchedPokemons}
-            onPokemonClick={handlePokemonClick}
-          />
-        </Sidebar>
-        {selectedPokemonIndex !== null && <Section pokemon={selectedPokemon} />}
+        <Header />
+        <Body>
+          <Sidebar>
+            <Searchbar
+              functionSearch={handleSetSearchQuery}
+              onTypeSelect={setSelectedType} // Passando a função para o Searchbar
+            />
+            <ListaPokemon
+              pokemons={searchedPokemons}
+              onPokemonClick={handlePokemonClick}
+            />
+          </Sidebar>
+          {selectedPokemonIndex !== null && (
+            <Section pokemon={selectedPokemon} />
+          )}
+        </Body>
       </Container>
     </>
   );
