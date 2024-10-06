@@ -15,6 +15,11 @@ export const Logo = styled.img`
   cursor: pointer;
   margin: 10px;
   padding: 10px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do botão */
+  }
 `;
 
 export const Nav = styled.div`
@@ -25,6 +30,11 @@ export const Nav = styled.div`
   cursor: pointer;
   margin: 10px;
   padding: 10px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const Text = styled.p`
