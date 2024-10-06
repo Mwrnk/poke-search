@@ -22,9 +22,9 @@ export const Pokesearch = () => {
     getDetailPokemon();
   }, [pokemons]);
 
-  const handlePokemonClick = (index) => {
-    console.log("Pokemon clicado:", index);
-    setSelectedPokemonIndex(index); // Atualiza o índice do Pokémon selecionado
+  const handlePokemonClick = (pokemon) => {
+    console.log("Pokemon clicado:", pokemon);
+    setSelectedPokemonIndex(pokemon); // Atualiza o índice do Pokémon selecionado
   };
 
   const getPokemons = async () => {
@@ -51,7 +51,7 @@ export const Pokesearch = () => {
   };
 
   const searchedPokemons = detailPokemon.filter((pokemon) => {
-    const matchesName = pokemon.name.includes(searchQuery);
+    const matchesName = pokemon.name.includes(searchQuery || "");
     const matchesType = selectedType
       ? pokemon.types.some((typeInfo) => typeInfo.type.name === selectedType)
       : true;
@@ -59,7 +59,7 @@ export const Pokesearch = () => {
   });
 
   const selectedPokemon =
-    selectedPokemonIndex !== null ? pokemons[selectedPokemonIndex] : null;
+    selectedPokemonIndex !== null ? detailPokemon[selectedPokemonIndex] : null;
 
   return (
     <>
@@ -76,9 +76,7 @@ export const Pokesearch = () => {
               onPokemonClick={handlePokemonClick}
             />
           </Sidebar>
-          {selectedPokemonIndex !== null && (
-            <Section pokemon={selectedPokemon} />
-          )}
+          {selectedPokemon && <Section pokemon={selectedPokemon} />}
         </Body>
       </Container>
     </>

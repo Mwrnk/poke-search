@@ -7,9 +7,9 @@ const ListaPokemon = ({ pokemons, onPokemonClick }) => {
     <PokemonListContainer>
       {pokemons.map((pokemon, index) => (
         <PokemonCard
-          key={pokemon.id}
+          key={index}
           pokemon={pokemon}
-          onClick={() => onPokemonClick(index)} // Passa o índice ao clicar
+          onClick={() => onPokemonClick(pokemon)} // Passa o índice ao clicar
         />
       ))}
     </PokemonListContainer>
