@@ -24,7 +24,7 @@ export const Searchbar = ({ functionSearch, onTypeSelect }) => {
           <Input
             type="text"
             placeholder="Buscar Pokémon..."
-            maxLength={12}
+            maxLength={30}
             onChange={onChangePokemonBuscado}
             value={pokemonBuscado}
           />
