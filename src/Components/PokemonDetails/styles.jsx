@@ -9,6 +9,8 @@ export const PokemonDetailsContainer = styled.div`
   margin: 10px;
   padding: 10px;
   flex-grow: 1;
+  position: relative; /* Adicionado para que o spinner fique posicionado corretamente */
+  min-height: 400px; /* Ajustado para garantir espaço suficiente para o conteúdo */
 `;
 
 export const PokemonDetailsCard = styled.div`
@@ -36,12 +38,12 @@ export const PokemonImage = styled.img`
 
 export const PokemonLabel = styled.div`
   display: flex;
-  flex-direction: column; /* Mudado para coluna para centralizar texto */
-  align-items: center; /* Centraliza os itens */
-  justify-content: flex-start; /* Centraliza os itens verticalmente */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   background-color: #1c1b1f;
   border-radius: 24px;
-  padding: 10px; /* Adiciona padding para espaçamento */
+  padding: 10px;
   width: 50%;
   box-shadow: 1px 2px 4px 2px rgb(0.15);
   height: 220px;
@@ -51,13 +53,14 @@ export const PokemonInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; /* Centraliza o conteúdo */
+  justify-content: center;
   background-color: #1c1b1f;
   border-radius: 12px;
   height: auto;
   margin: 10px;
   padding: 0 10px;
 `;
+
 export const PokemonTypes = styled.div`
   display: flex;
   flex-direction: row;
@@ -74,15 +77,17 @@ export const PokemonTypes = styled.div`
 
 export const PokemonAbilitiesContainer = styled.div`
   display: flex;
-  flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte, se necessário */
-  justify-content: center; /* Centraliza as habilidades */
-  margin-top: 10px; /* Espaçamento acima do contêiner de habilidades */
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
 `;
+
 export const PokemonAbility = styled(PokemonStyledText)`
-  margin: 5px; /* Espaçamento entre as habilidades */
-  padding: 5px 10px; /* Espaçamento interno nas habilidades */
-  border-radius: 5px; /* Bordas arredondadas */
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
 `;
+
 export const PokemonDetailsIcon = styled.img`
   width: 32px;
   height: 32px;

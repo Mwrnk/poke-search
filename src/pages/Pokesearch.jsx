@@ -4,50 +4,79 @@ import Container from "../Components/Container/Container";
 import { Searchbar } from "../Components/SearchBar/Searchbar";
 import Sidebar from "../Components/SideBar/Sidebar";
 import ListaPokemon from "../Components/ListPokemon/ListPokemon";
-import Section from "../Components/MainContent/Maincontent";
 import Body from "../Components/Body/Body";
 import Header from "../Components/Header/Header";
+import PokemonSection from "../Components/PokemonDetails/PokemonDetails";
+import ClipLoader from "react-spinners/ClipLoader";
+import 
+// Estilos para centralizar e aumentar o spinner
+const SpinnerContainer = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "100vh", // Para centralizar verticalmente
+};
+
 export const Pokesearch = () => {
   const [pokemons, setPokemons] = useState([]);
   const [detailPokemon, setDetailPokemon] = useState([]);
   const [searchQuery, setSearchQuery] = useState([]);
   const [selectedPokemonIndex, setSelectedPokemonIndex] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getPokemons();
   }, []);
 
   useEffect(() => {
-    getDetailPokemon();
+    if (pokemons.length > 0) getDetailPokemon();
   }, [pokemons]);
 
   const handlePokemonClick = (pokemon) => {
     console.log("Pokemon clicado:", pokemon);
-    setSelectedPokemonIndex(pokemon); // Atualiza o índice do Pokémon selecionado
+    setSelectedPokemonIndex(pokemon);
   };
 
   const getPokemons = async () => {
-    const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/?limit=50&offset=0`
-    );
-
-    setPokemons(response.data.results);
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0`
+      );
+      setPokemons(response.data.results);
+      setLoading(false);
+    } catch (error) {
+      console.error("Erro ao buscar a lista de Pokémon:", error);
+      setError("Erro ao buscar a lista de Pokémon.");
+      setLoading(false);
+    }
   };
 
   const getDetailPokemon = async () => {
-    const promises = [];
-    for (const pokemon of pokemons) {
-      promises.push(axios.get(`${pokemon.url}`));
+    setLoading(true);
+    try {
+      const promises = pokemons.map((pokemon) =>
+        axios.get(`${pokemon.url}`).catch((error) => {
+          console.error(`Erro ao buscar detalhes de ${pokemon.name}:`, error);
+          return null;
+        })
+      );
+      const response = await Promise.all(promises);
+      const validResults = response.filter((res) => res !== null);
+      setDetailPokemon(validResults.map((res) => res.data));
+      setLoading(false);
+    } catch (error) {
+      console.error("Erro ao buscar detalhes dos Pokémon:", error);
+      setError("Erro ao buscar detalhes dos Pokémon.");
+      setLoading(false);
     }
-    const response = await Promise.all(promises);
-    const results = response.map((response) => response.data);
-
-    setDetailPokemon(results);
   };
 
   const handleSetSearchQuery = (query) => {
-    setSearchQuery(query);
+    setSearchQuery(query.toLowerCase());
   };
 
   const searchedPokemons = detailPokemon.filter((pokemon) => {
@@ -58,8 +87,7 @@ export const Pokesearch = () => {
     return matchesName && matchesType;
   });
 
-  const selectedPokemon =
-    selectedPokemonIndex !== null ? detailPokemon[selectedPokemonIndex] : null;
+  const selectedPokemon = selectedPokemonIndex;
 
   return (
     <>
@@ -69,14 +97,27 @@ export const Pokesearch = () => {
           <Sidebar>
             <Searchbar
               functionSearch={handleSetSearchQuery}
-              onTypeSelect={setSelectedType} // Passando a função para o Searchbar
+              onTypeSelect={setSelectedType}
             />
-            <ListaPokemon
-              pokemons={searchedPokemons}
-              onPokemonClick={handlePokemonClick}
-            />
+
+            {/* Exibe spinner durante o carregamento */}
+            {loading ? (
+              <div style={SpinnerContainer}>
+                <ClipLoader color={"#123abc"} loading={loading} size={100} />
+              </div>
+            ) : error ? (
+              <p>{error}</p>
+            ) : searchedPokemons.length > 0 ? (
+              <ListaPokemon
+                pokemons={searchedPokemons}
+                onPokemonClick={handlePokemonClick}
+              />
+            ) : (
+              <p>Nenhum Pokémon encontrado!</p>
+            )}
           </Sidebar>
-          {selectedPokemon && <Section pokemon={selectedPokemon} />}
+
+          <PokemonSection pokemon={selectedPokemon} />
         </Body>
       </Container>
     </>
