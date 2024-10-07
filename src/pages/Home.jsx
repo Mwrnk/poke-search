@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import pokemon from "../assets/pokemon.svg";
-import githubIcon from "../assets/github-mark.svg";
-import { Button } from "../Components/SearchBar/Searchbar";
-import pokemonImage from "../assets/charizard.gif";
+import githubIcon from "../assets/GitHub.svg";
+import pokemonImage from "../assets/pokemonTrainer.gif";
 import { useNavigate } from "react-router-dom"; // Adicione esta linha no topo do arquivo
 
 const Container = styled.div`
@@ -13,6 +12,8 @@ const Container = styled.div`
   min-height: 100vh;
   margin: 0;
   padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   max-width: 100%;
   background-color: #ffffff;
 `;
@@ -27,13 +28,35 @@ const StyledText = styled.h1`
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3); /* Ajuste os valores conforme necessário */
 `;
 
-const Header = styled.div`
+const Button = styled.button`
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  width: fit-content;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  border-radius: 12px;
+  margin-top: 10px;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const Header = styled.div`
   width: 100%;
   display: flex;
+  height: auto;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: #1c1b1f;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
@@ -54,16 +77,19 @@ const Body = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  width: fit-content;
+  margin: 40px;
 `;
 
 const SectionText = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: fit-content;
+  max-width: 70%;
 `;
 
 const SectionImage = styled.img`
-  max-width: 45%;
+  max-width: 90%;
   height: auto;
 `;
 
@@ -91,6 +117,7 @@ export const Home = () => {
             fontSize="16px"
             fontFamily="Roboto Mono, monospace"
             fontWeight="regular"
+            textColor="#ffffff"
           >
             github.com/Mwrnk/poke-search
           </StyledText>
@@ -102,10 +129,10 @@ export const Home = () => {
             Temos que<br></br> Buscar Todos!
           </StyledText>
           <StyledText fontSize="32" fontWeight="300">
-            Busque, filtre e favorite mais de cem Pokémon.
+            Busque e filtre mais de 500 Pokémon!
           </StyledText>
           <Button $bgColor="black" onClick={handleButtonClick}>
-            Use Agora
+            Comece a Buscar
           </Button>
         </SectionText>
         <SectionImage src={pokemonImage} alt="Pokémon" />
@@ -117,10 +144,7 @@ export const Home = () => {
           fontFamily="Roboto Mono, monospace"
           fontWeight="400"
         >
-          © 2024 Mateus Werneck, Tiago Malaquias e Pedro Marazo. Este projeto é
-          uma obra independente e não está associado, patrocinado ou endossado
-          pela Nintendo, Game Freak ou Creatures. Todos os direitos reservados
-          aos respectivos proprietários.
+          © 2024 Todos os direitos reservados a Pokémon Company.
         </StyledText>
       </Footer>
     </Container>
