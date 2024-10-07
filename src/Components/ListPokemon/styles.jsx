@@ -6,6 +6,7 @@ export const PokemonListContainer = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 
   /* Esconder a scrollbar no navegador */
   scrollbar-width: none;

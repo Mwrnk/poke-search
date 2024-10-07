@@ -8,7 +8,7 @@ import Body from "../Components/Body/Body";
 import Header from "../Components/Header/Header";
 import PokemonSection from "../Components/PokemonDetails/PokemonDetails";
 import ClipLoader from "react-spinners/ClipLoader";
-import 
+
 // Estilos para centralizar e aumentar o spinner
 const SpinnerContainer = {
   display: "flex",

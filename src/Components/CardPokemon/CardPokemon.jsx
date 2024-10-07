@@ -5,8 +5,7 @@ import {
   PokemonName,
   PokemonType,
 } from "./styles";
-
-import { typeColors } from "../MainContent/styles";
+import { typeColors } from "../PokemonDetails/styles";
 
 const PokemonCard = ({ pokemon, onClick }) => {
   const [isPressed, setIsPressed] = useState(false);

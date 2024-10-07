@@ -3,19 +3,19 @@ import styled from "styled-components";
 export const SearchBar = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
   margin: 10px;
   padding: 10px;
 `;
 
 export const SearchInput = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
-  width: 245px;
+  width: auto;
   height: 50px;
-  padding-left: 26px;
+  padding-left: 32px;
+  padding-right: 32px;
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao botão */
@@ -28,6 +28,8 @@ export const Input = styled.input`
   border: none;
   outline: none;
   padding: 8px; /* Ajuste conforme necessário */
+  width: 100%; /* O input ocupa todo o espaço disponível */
+  background: none; /* Remove cor de fundo extra */
 `;
 
 export const Icon = styled.img`

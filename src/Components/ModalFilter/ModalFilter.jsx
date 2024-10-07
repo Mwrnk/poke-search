@@ -32,7 +32,6 @@ const iconTipos = importAll(
 export const ModalFilter = ({ onClose, onTypeSelect }) => {
   const handleTypeIconClick = (filename) => {
     const type = filename.split("_")[0].toLowerCase(); // Extrai o tipo
-    console.log(`Ícone do tipo clicado: ${type}`);
     onTypeSelect(type); // Passa o tipo para o Searchbar
     onClose(); // Fecha o modal
   };
@@ -61,7 +60,16 @@ export const ModalFilter = ({ onClose, onTypeSelect }) => {
           ))}
         </ModalContainerTipos>
         <ModalFooter>
-          <Button onClick={() => onTypeSelect(null)}>Limpar Filtro</Button>
+          <Button
+            $buttonColor="white"
+            $bgColor="#007AFF"
+            onClick={() => {
+              onTypeSelect(null); // Limpa o filtro
+              onClose(); // Fecha o modal
+            }}
+          >
+            Limpar Filtro
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

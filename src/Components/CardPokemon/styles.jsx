@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const PokemonCardContainer = styled.div`
   display: flex;
   align-items: center;
@@ -18,8 +17,8 @@ export const PokemonCardContainer = styled.div`
 `;
 
 export const PokemonImage = styled.img`
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height: auto;
   margin-right: 10px;
   background-color: red;
   border-radius: 15px;
@@ -27,7 +26,7 @@ export const PokemonImage = styled.img`
 
 export const PokemonName = styled.h3`
   margin: 0;
-  font-size: 32px;
+  font-size: 24px;
   white-space: nowrap; /* Evita que o texto quebre em múltiplas linhas */
   overflow: hidden; /* Oculta o texto que transborda */
   text-overflow: ellipsis; /* Adiciona "..." no final se o texto for muito longo */
@@ -39,4 +38,6 @@ export const PokemonType = styled.p`
   margin: 0;
   font-size: 16px;
   color: #1c1b1f;
+  font-weight: 400;
+  font-family: "Roboto Mono", monospace;
 `;
