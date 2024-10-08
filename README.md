@@ -1,12 +1,12 @@
 Poke Search
-Venha saber tudo sobre o seu Pokémon!
+  Venha saber tudo sobre o seu Pokémon!
 Sobre
-O Poke Search é um site dedicado aos fãs de Pokémon que desejam saber mais sobre seus personagens favoritos. Ele fornece informações detalhadas sobre os Pokémon, utilizando uma interface moderna e interativa.
+  O Poke Search é um site dedicado aos fãs de Pokémon que desejam saber mais sobre seus personagens favoritos. Ele fornece informações detalhadas sobre os Pokémon, utilizando uma interface moderna e interativa.
 Tecnologias Utilizadas
-•	React: Uma biblioteca JavaScript para construção de interfaces de usuário dinâmicas e reativas.
-•	Styled-Components: Uma biblioteca que permite aplicar estilos diretamente aos componentes React utilizando CSS-in-JS.
-•	React-Spinner: Um conjunto de componentes React para exibição de indicadores de carregamento, útil para melhorar a experiência de usuário durante a busca de informações.
-•	React-Router-Dom: Gerencia o roteamento do aplicativo, permitindo a navegação entre páginas sem recarregar a interface.
+  •	React: Uma biblioteca JavaScript para construção de interfaces de usuário dinâmicas e reativas.
+  •	Styled-Components: Uma biblioteca que permite aplicar estilos diretamente aos componentes React utilizando CSS-in-JS.
+  •	React-Spinner: Um conjunto de componentes React para exibição de indicadores de carregamento, útil para melhorar a experiência de usuário durante a busca   de informações.
+  •	React-Router-Dom: Gerencia o roteamento do aplicativo, permitindo a navegação entre páginas sem recarregar a interface.
 ________________________________________
 Como utilizar
 1.	Pré-requisitos:
