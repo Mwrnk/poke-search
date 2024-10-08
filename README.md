@@ -1,14 +1,24 @@
 Poke Search
+
   Venha saber tudo sobre o seu Pokémon!
-Sobre
+
+Sobre:
+
   O Poke Search é um site dedicado aos fãs de Pokémon que desejam saber mais sobre seus personagens favoritos. Ele fornece informações detalhadas sobre os Pokémon, utilizando uma interface moderna e interativa.
-Tecnologias Utilizadas
+  
+Tecnologias Utilizadas:
+
   •	React: Uma biblioteca JavaScript para construção de interfaces de usuário dinâmicas e reativas.
+  
   •	Styled-Components: Uma biblioteca que permite aplicar estilos diretamente aos componentes React utilizando CSS-in-JS.
+  
   •	React-Spinner: Um conjunto de componentes React para exibição de indicadores de carregamento, útil para melhorar a experiência de usuário durante a busca   de informações.
+  
   •	React-Router-Dom: Gerencia o roteamento do aplicativo, permitindo a navegação entre páginas sem recarregar a interface.
+  
 ________________________________________
-Como utilizar
+
+Como utilizar:
 1.	Pré-requisitos:
 o	Certifique-se de ter o Node.js instalado no seu computador. Caso ainda não tenha, faça o download em: Node.js.
 2.	Clonar o repositório:
@@ -30,12 +40,15 @@ Funcionalidades do Site
 I.	Nome e número do Pokémon na Pokédex.
 II.	Tipos (água, fogo, grama, etc.).
 ________________________________________
+
 Contribuição
+
 Sinta-se à vontade para contribuir com melhorias, novos recursos ou correções no projeto. Você pode:
 •	Criar pull requests para sugestões de código.
 •	Relatar issues no repositório para sinalizar bugs ou problemas encontrados.
 ________________________________________
-Autores
+Autores:
+
 •	@Mateus Werneck
 •	@Tiago Souza
 •	@Pedro Henrique Marazo
