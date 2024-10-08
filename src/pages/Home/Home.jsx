@@ -34,7 +34,7 @@ export const Home = () => {
           <GithubLink
             href="https://github.com/Mwrnk/poke-search"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer"// Abre o link em uma nova aba e melhora segurança
           >
             <Logo width="45" height="45" src={githubIcon} />
             <StyledText
