@@ -55,7 +55,10 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
     . Enviar pull requests com melhorias e novos recursos.
     . Relatar issues para bugs ou problemas.
     
-### Autores
+## Autores
+
 @Mateus Werneck
-@Tiago Souza
-@Pedro Henrique Marazo
+
+@Tiago Souza 
+
+@Pedro Henrique Marazo 
