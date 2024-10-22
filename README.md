@@ -52,8 +52,10 @@ Venha descobrir tudo sobre o seu Pokémon favorito!
 ### Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para:
-    . Enviar pull requests com melhorias e novos recursos.
-    . Relatar issues para bugs ou problemas.
+
+- Enviar pull requests com melhorias e novos recursos.
+    
+- Relatar issues para bugs ou problemas.
     
 ## Autores
 
