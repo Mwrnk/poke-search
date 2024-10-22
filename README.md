@@ -1,49 +1,61 @@
-Poke Search
+# Poké Search
 
-Venha saber tudo sobre o seu Pokémon!
+Venha descobrir tudo sobre o seu Pokémon favorito!
 
-Sobre:
+## Sobre o Projeto
 
-O Poke Search é um site dedicado aos fãs de Pokémon que desejam saber mais sobre seus personagens favoritos. Ele fornece informações detalhadas sobre os Pokémon, utilizando uma interface moderna e interativa.
+**Poké Search** é uma plataforma interativa para os fãs de Pokémon que desejam obter informações detalhadas sobre qualquer Pokémon. Usando uma interface moderna e amigável, você pode pesquisar, explorar e aprender sobre os Pokémon de forma rápida e divertida.
 
+**Você pode testar o site acessando o seguinte link: [Acesse o Poké Search aqui](https://poke-searching.surge.sh)**
 
-Funcionalidades do Site:
+## Funcionalidades
 
-- Para começar, visite o site através do link fornecido. 
-- A página inicial apresentará um campo de busca onde você pode pesquisar informações sobre qualquer Pokémon.
-- Buscar um Pokémon: 
-    Digite o nome ou número do Pokémon na barra de busca e pressione Enter ou clique no botão de pesquisa. • 
-    Enquanto o site carrega os dados, um spinner (indicador de carregamento) será exibido. 
-    Quando o carregamento terminar, você verá informações detalhadas sobre o Pokémon selecionado, como: I. Nome e número do Pokémon na Pokédex. II. Tipos (água, fogo, grama, etc.).
+- **Busca Simples:** 
+   - Na página inicial, você encontrará um campo de busca onde pode digitar o nome ou número do Pokémon.
+   - Após pressionar "Enter" ou clicar no botão de pesquisa, o site exibirá um **spinner** enquanto carrega as informações.
+   - Quando os dados forem carregados, você verá:
+     - O nome e número do Pokémon na Pokédex.
+     - Seus tipos (fogo, água, grama, etc.).
 
-Tecnologias Utilizadas:
+## Tecnologias Utilizadas
 
-• React: Uma biblioteca JavaScript para construção de interfaces de usuário dinâmicas e reativas.
+- **React:** Biblioteca JavaScript para criação de interfaces de usuário dinâmicas.
+- **Styled-Components:** Biblioteca para estilização de componentes com CSS-in-JS.
+- **React-Spinner:** Componentes para exibir indicadores de carregamento, melhorando a experiência do usuário.
+- **React-Router-Dom:** Gerenciamento de rotas para navegação sem recarregar a página.
 
-• Styled-Components: Uma biblioteca que permite aplicar estilos diretamente aos componentes React utilizando CSS-in-JS.
+## Como Usar
 
-• React-Spinner: Um conjunto de componentes React para exibição de indicadores de carregamento, útil para melhorar a experiência de usuário durante a busca de informações.
+### Pré-requisitos
 
-• React-Router-Dom: Gerencia o roteamento do aplicativo, permitindo a navegação entre páginas sem recarregar a interface.
+- Certifique-se de ter o [Node.js](https://nodejs.org) instalado.
 
-Como utilizar:
+### Instalação
 
- - Pré-requisitos: o Certifique-se de ter o Node.js instalado no seu computador. Caso ainda não tenha, faça o download em: Node.js.
-Clonar o repositório: 
- - Abra o terminal e execute o comando: git clone <url-do repositório>
- - Navegar até o diretório do projeto: 
- - Acesse a pasta do projeto clonado: cd nome-do-projeto
-Instalar as dependências: 
- - Execute o seguinte comando para instalar as bibliotecas e pacotes necessários: npm install
-Iniciar a aplicação:
- - Para rodar o projeto em ambiente de desenvolvimento, utilize o comando: npm run start
-Acessar a aplicação:
- - O aplicativo estará disponível em seu navegador no endereço padrão: http://localhost:3000.Contribuição
+1. Clone o repositório:
+   ```bash
+   git clone <poke-search>
+2. Acesse o diretório do projeto:
+    ```bash
+    cd poke-search
+3. Instale as dependências:
+    ```bash
+    npm install
+ 
+### Executando o Projeto
 
-Sinta-se à vontade para contribuir com melhorias, novos recursos ou correções no projeto. Você pode: • Criar pull requests para sugestões de código. • Relatar issues no repositório para sinalizar bugs ou problemas encontrados.
+1. Para iniciar a aplicação em ambiente de desenvolvimento:
+    ```bash
+    npm run start
+2. O aplicativo estará disponível no navegador em: http://localhost:3000.
+   
+### Contribuição
 
-Autores:
-
-• @Mateus Werneck 
-• @Tiago Souza 
-• @Pedro Henrique Marazo
+Contribuições são bem-vindas! Sinta-se à vontade para:
+    . Enviar pull requests com melhorias e novos recursos.
+    . Relatar issues para bugs ou problemas.
+    
+### Autores
+@Mateus Werneck
+@Tiago Souza
+@Pedro Henrique Marazo
