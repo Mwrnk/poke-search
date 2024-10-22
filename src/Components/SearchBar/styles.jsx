@@ -5,6 +5,7 @@ export const SearchBar = styled.div`
   flex-direction: row;
   margin: 10px;
   padding: 10px;
+  align-items: center;
 `;
 
 export const SearchInput = styled.div`
@@ -16,6 +17,7 @@ export const SearchInput = styled.div`
   height: 50px;
   padding-left: 32px;
   padding-right: 32px;
+  margin: 10px;
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao botão */

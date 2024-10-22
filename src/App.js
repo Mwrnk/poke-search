@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pokesearch" element={<Pokesearch />} />
+        <Route path="*" element={<Pokesearch />} />
       </Routes>
     </Router>
   );

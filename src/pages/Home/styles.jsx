@@ -102,7 +102,6 @@ export const SectionImage = styled.img`
 
 export const Footer = styled.div`
   background-color: #ffffff;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
 `;
