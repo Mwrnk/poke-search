@@ -1,20 +1,49 @@
-import { useState } from "react";
-import searchIcon from "../../assets/search.svg";
-import filterIcon from "../../assets/filter.svg";
-import { ModalFilter } from "../ModalFilter/ModalFilter";
-import { SearchBar, SearchInput, Input, Button, Icon } from "./styles";
+import { useState, useCallback } from 'react';
+import searchIcon from '../../assets/search.svg';
+import filterIcon from '../../assets/filter.svg';
+import { ModalFilter } from '../ModalFilter/ModalFilter';
+import { SearchBar, SearchInput, Input, Button, Icon } from './styles';
+
+// Hook personalizado para debounce
+const useDebounce = (callback, delay) => {
+  const [debounceTimer, setDebounceTimer] = useState(null);
+
+  const debouncedCallback = useCallback(
+    (...args) => {
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+
+      const newTimer = setTimeout(() => {
+        callback(...args);
+      }, delay);
+
+      setDebounceTimer(newTimer);
+    },
+    [callback, delay, debounceTimer]
+  );
+
+  return debouncedCallback;
+};
 
 export const Searchbar = ({ functionSearch, onTypeSelect }) => {
-  const [pokemonBuscado, setPokemonBuscado] = useState("");
+  const [pokemonBuscado, setPokemonBuscado] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
+  const handleOpenModal = useCallback(() => setModalOpen(true), []);
+  const handleCloseModal = useCallback(() => setModalOpen(false), []);
 
-  const onChangePokemonBuscado = (event) => {
-    setPokemonBuscado(event.target.value);
-    functionSearch(event.target.value); // Passa o valor buscado para o pai
-  };
+  // ✅ Debounce de 300ms para a busca
+  const debouncedSearch = useDebounce(functionSearch, 300);
+
+  const onChangePokemonBuscado = useCallback(
+    (event) => {
+      const value = event.target.value;
+      setPokemonBuscado(value);
+      debouncedSearch(value);
+    },
+    [debouncedSearch]
+  );
 
   return (
     <>
@@ -34,12 +63,7 @@ export const Searchbar = ({ functionSearch, onTypeSelect }) => {
         </Button>
       </SearchBar>
 
-      {modalOpen && (
-        <ModalFilter
-          onClose={handleCloseModal} // Fecha o modal
-          onTypeSelect={onTypeSelect} // Passa o tipo selecionado para o pai
-        />
-      )}
+      {modalOpen && <ModalFilter onClose={handleCloseModal} onTypeSelect={onTypeSelect} />}
     </>
   );
 };

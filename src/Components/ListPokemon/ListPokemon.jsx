@@ -1,19 +1,21 @@
-import React from "react";
-import PokemonCard from "../CardPokemon/CardPokemon";
-import { PokemonListContainer } from "./styles";
+import React from 'react';
+import PokemonCard from '../CardPokemon/CardPokemon';
+import { PokemonListContainer } from './styles';
 
-const ListaPokemon = ({ pokemons, onPokemonClick }) => {
+const ListaPokemon = React.memo(({ pokemons, onPokemonClick }) => {
   return (
     <PokemonListContainer>
-      {pokemons.map((pokemon, index) => (
+      {pokemons.map((pokemon) => (
         <PokemonCard
-          key={index}
+          key={pokemon.id || pokemon.name} // ✅ Key única baseada no ID
           pokemon={pokemon}
-          onClick={() => onPokemonClick(pokemon)} // Passa o índice ao clicar
+          onClick={() => onPokemonClick(pokemon)}
         />
       ))}
     </PokemonListContainer>
   );
-};
+});
+
+ListaPokemon.displayName = 'ListaPokemon';
 
 export default ListaPokemon;

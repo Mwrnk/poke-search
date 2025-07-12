@@ -1,20 +1,15 @@
-import React, { useState } from "react";
-import {
-  PokemonCardContainer,
-  PokemonImage,
-  PokemonName,
-  PokemonType,
-} from "./styles";
-import { typeColors } from "../PokemonDetails/styles";
+import React, { useState } from 'react';
+import { PokemonCardContainer, PokemonImage, PokemonName, PokemonType } from './styles';
+import { typeColors } from '../PokemonDetails/styles';
 
-const PokemonCard = ({ pokemon, onClick }) => {
+const PokemonCard = React.memo(({ pokemon, onClick }) => {
   const [isPressed, setIsPressed] = useState(false);
 
   // Pegar o primeiro tipo do Pokémon
   const firstType = pokemon.types && pokemon.types[0].type.name;
 
   // Definir a cor de fundo com base no primeiro tipo ou usar uma cor padrão
-  const backgroundColor = typeColors[firstType] || "#434343"; // Cor padrão
+  const backgroundColor = typeColors[firstType] || '#434343'; // Cor padrão
 
   return (
     <PokemonCardContainer
@@ -25,9 +20,10 @@ const PokemonCard = ({ pokemon, onClick }) => {
       onMouseLeave={() => setIsPressed(false)} // Garante que a animação volte se o mouse sair enquanto pressionado
     >
       <PokemonImage
-        src={pokemon.sprites ? pokemon.sprites.front_default : ""}
+        src={pokemon.sprites ? pokemon.sprites.front_default : ''}
         alt={pokemon.name}
         style={{ backgroundColor }}
+        loading="lazy" // ✅ Lazy loading para imagens
       />
       <div>
         <PokemonName>{pokemon.name}</PokemonName>
@@ -41,6 +37,8 @@ const PokemonCard = ({ pokemon, onClick }) => {
       </div>
     </PokemonCardContainer>
   );
-};
+});
+
+PokemonCard.displayName = 'PokemonCard';
 
 export default PokemonCard;
